@@ -1,0 +1,31 @@
+Comparaison des scores MAP : TF-IDF et BM25 sur ArguAna
+
+Evaluation sur le split test d'ArguAna, avec les memes 1 406 requetes et les
+memes jugements de pertinence (qrels). Chaque requete a un document pertinent
+connu.
+
+Mesure     TF-IDF    BM25      Ecart BM25 - TF-IDF
+MAP@1      0,2077    0,2269    +0,0192
+MAP@3      0,2986    0,3267    +0,0281
+MAP@5      0,3292    0,3546    +0,0254
+MAP@10     0,3514    0,3768    +0,0254
+MAP@100    0,3651    0,3869    +0,0218
+MAP@1000   0,3653    0,3871    +0,0218
+
+Interpretation
+BM25 obtient un score MAP superieur a TF-IDF pour toutes les profondeurs
+mesurees. L'ecart est le plus important a MAP@3 (+0,0281), ce qui suggere que
+BM25 classe plus efficacement le document pertinent parmi les tout premiers
+resultats.
+
+Comme chaque requete a un seul document pertinent connu, la precision moyenne
+depend surtout du rang auquel ce document apparait. Un MAP plus eleve indique
+donc que, sur ces donnees et avec ces implementations, BM25 place generalement
+le document pertinent plus haut que TF-IDF.
+
+Conclusion
+Pour le classement des documents pertinents d'ArguAna selon la metrique MAP,
+BM25 est meilleur que TF-IDF dans cette evaluation. Cela ne garantit pas que
+BM25 sera superieur pour toutes les collections ou toutes les configurations.
+Les resultats BM25 proviennent de l'implementation locale avec k1=1.2 et
+b=0.75 ; ils peuvent differer de ceux d'Elasticsearch ou d'autres moteurs.
