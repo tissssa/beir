@@ -1,0 +1,38 @@
+Interpretation des resultats TF-IDF sur ArguAna
+
+Evaluation : split test, 1 406 requetes.
+Chaque requete a exactement un document pertinent dans les qrels.
+
+NDCG@10 = 0,4380
+Cette mesure tient compte du rang du document pertinent dans les dix premiers
+resultats. Plus il est classe haut, meilleur est le score. Le score indique que
+le classement dans le top 10 peut encore etre ameliore.
+
+MAP@10 = 0,3514
+Comme chaque requete a un seul document pertinent, c
+s dix premiers.
+
+Recall@10 = 0,7176
+Le document pertinent apparait dans les dix premiers resultats pour environ
+71,8 % des requetes.
+
+Recall@100 = 0,9701
+Le document pertinent apparait dans les cent premiers resultats pour environ
+97,0 % des requetes.
+
+Recall@1000 = 0,9922
+Le document pertinent apparait dans les mille premiers resultats pour environ
+99,2 % des requetes.
+
+P@10 = 0,0718
+En moyenne, environ 7,2 % des documents parmi les dix premiers sont pertinents.
+Cette precision est limitee en partie parce qu'il n'y a qu'un seul document
+pertinent connu par requete dans les qrels.
+
+Conclusion
+TF-IDF retrouve le document pertinent pour beaucoup de requetes lorsqu'on
+examine une liste assez longue : environ 97 % dans le top 100. Cependant, le
+document pertinent n'est pas toujours classe suffisamment haut dans le top 10.
+Pour savoir si TF-IDF est meilleur ou moins bon que SentenceBERT, il faut
+comparer les deux methodes sur le meme split test, avec les memes requetes,
+qrels et metriques.

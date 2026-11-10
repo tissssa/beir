@@ -26,6 +26,6 @@ le document pertinent plus haut que TF-IDF.
 Conclusion
 Pour le classement des documents pertinents d'ArguAna selon la metrique MAP,
 BM25 est meilleur que TF-IDF dans cette evaluation. Cela ne garantit pas que
-BM25 sera superieur pour toutes les collections ou toutes les configurations.
+BM25 sera superieur pour toutes les co0llections ou toutes les configurations.
 Les resultats BM25 proviennent de l'implementation locale avec k1=1.2 et
 b=0.75 ; ils peuvent differer de ceux d'Elasticsearch ou d'autres moteurs.

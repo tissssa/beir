@@ -1,0 +1,44 @@
+Interpretation des resultats BM25 sur ArguAna
+
+Evaluation : split test, 1 406 requetes.
+Chaque requete a exactement un document pertinent connu dans les qrels.
+
+NDCG@10 = 0,4642
+Cette mesure tient compte du rang du document pertinent dans les dix premiers
+resultats. Le score indique que BM25 classe assez souvent le document pertinent
+dans le top 10, meme s'il n'est pas toujours pres de la premiere position.
+
+MAP@10 = 0,3768
+Avec un seul document pertinent par requete, cette mesure reflète principalement
+le rang de ce document lorsqu'il apparait dans le top 10.
+
+Recall@10 = 0,7454
+Le document pertinent apparait dans les dix premiers resultats pour environ
+74,5 % des requetes.
+
+Recall@100 = 0,9495
+Le document pertinent apparait dans les cent premiers resultats pour environ
+95,0 % des requetes.
+
+Recall@1000 = 0,9886
+Le document pertinent apparait dans les mille premiers resultats pour environ
+98,9 % des requetes.
+
+P@10 = 0,0745
+En moyenne, 7,45 % des documents parmi les dix premiers sont pertinents. Ce
+score s'explique en partie par le fait qu'un seul document pertinent connu est
+associe a chaque requete.
+
+Comparaison avec TF-IDF
+Sur les memes requetes et qrels, BM25 obtient un NDCG@10 de 0,4642 contre
+0,4380 pour TF-IDF, et un Recall@10 de 0,7454 contre 0,7176. BM25 classe donc
+mieux le document pertinent dans les premiers resultats pour ces metriques.
+En revanche, TF-IDF obtient un Recall@100 de 0,9701, legerement superieur au
+0,9495 de BM25 : il retrouve un peu plus souvent le document pertinent dans le
+top 100.
+
+Conclusion
+Avec cette implementation locale et les parametres k1=1.2 et b=0.75, BM25
+semble mieux classer les documents pertinents au debut de la liste que TF-IDF.
+Les scores peuvent differer de ceux obtenus avec Elasticsearch ou une autre
+implementation BM25.
